@@ -1,28 +1,38 @@
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.Scanner;
+import  java.util.List;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        Queue q = new Queue(5);
 
-        q.enqueue(1);
-        q.enqueue(2);
-        q.enqueue(3);
-        q.enqueue(4);
-        q.enqueue(5);
-        q.enqueue(6);
+        Queue<Integer> queue = new Queue<>[5];
 
-        for (int i=1; i<3; i++) {
-            System.out.println(q.enqueue);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.enqueue(5);
+        queue.enqueue(6);
+
+
+        for (int i; i< 3; i++) {
+            System.out.println(queue.enqueue());
         }
 
-        q.afisare();
 
-        q.dequeue();
+        System.out.println(queue.peek());
 
-        q.afisare();
+        System.out.print("Introduceti pozitia din lista :");
+        int poz = new Scanner(System.in).nextInt();
+        System.out.print("\n");
+
+        System.out.println("Element de la pozitia " + poz + " este:  " + queue.indexOf(poz));
+
+        System.out.println("Primul element servit: " + queue.dequeue());
+
 
     }
 }

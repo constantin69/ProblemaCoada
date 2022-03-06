@@ -1,19 +1,17 @@
-import java.util.Collections;
-import static java.util.Collections.list;
+import java.util.Scanner;
 
-public class Queue<T> {
+public class Queue<T>{
     private Object[] list;
-    public int top;
-    public int bottom;
-    private int size;
+    private int top;
+    private int bottom;
+    private final int size;
 
-    int[] iterare = new int[size];
 
-    public Queue(int size){
-        list = new Object[top, bottom];
+    public Queue(int size) {
+        list = new Object[size];
         this.size = size;
+        top = -1;
     }
-
 
     public boolean plina(){
         if(top == 0 && bottom == size-1){
@@ -36,52 +34,75 @@ public class Queue<T> {
     }
 
     public void enqueue(T x) {
+        int element = 0;
         if (plina()) {
             System.out.println("Coada este plina");
         }
         if(top == -1){
             top = 0;
             bottom++;
-            list(top, bottom) = x;
-            System.out.println("Element introdus " + x);
+            list[bottom] = element;
+            System.out.println("Element introdus " + element);
         }
     }
 
-
-
-    int dequeue(){
-        int element;
+    public T dequeue(){
         if (goala()) {
             System.out.println("Coada este goala!");
-            return -1;
+            return null;
         }
         else {
-            element = iterare[top];
             if (top >= bottom){
                 top = -1;
                 bottom = -1; // Este un singur element in coada
             }
             else {
+                System.out.println("Sa sters un element " + list[top]);
                 top++;
-                System.out.println("Sa sters un element " + element);
+                bottom--;
             }
         }
-        return element;
+        return (T) list[top];
     }
 
-    public void afisare(){
-       int i;
-       if (goala()){
-            System.out.println("Coada este goala");
+    public int indexOf(int x) {
+        int index = 0;
+
+        for (int i = 0; i<=list.length; i++){
+            if (list[i].equals(x)){
+                index = i;
+                break;
+            }
         }
-        else {
-            System.out.println("Primul index " + top);
+        return index;
+    }
+
+
+    public T peek(T x){
+        if (goala()) {
+            System.out.println("Coada este goala!");
+            return null;
+        }
+        return (T) list[top];
+    }
+
+
+    void afisare(){
+    int i;
+    if (top == -1){
+       System.out.println("Coada este goala!");
+    }
+    else {
+        System.out.println("Elementele cozii sunt: ");
+        for (i = top; i<=bottom; i++){
+            System.out.println(list[i]);
+            }
+
         }
 
-        for (i=top; i<bottom; i++)
-            System.out.println(i + " ");
     }
+
+
 
 }
-
 
