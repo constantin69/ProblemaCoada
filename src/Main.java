@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Queue<Integer> queue = new Queue<>[5];
+        Queue<Integer> queue = new Queue<>(5);
 
         queue.enqueue(1);
         queue.enqueue(2);
@@ -19,7 +19,7 @@ public class Main {
 
 
         for (int i; i< 3; i++) {
-            System.out.println(queue.enqueue());
+            System.out.println(queue.dequeue());
         }
 
 
